@@ -17,6 +17,8 @@ public class Leetcode107_LevelOrderBottomUp {
         levelOrderBottom(node);
     }
 
+    // Time complexity O(n)
+    // Space complexity O(n)
     public static List<List<Integer>> levelOrderBottom(
             TreeNode root
     ) {

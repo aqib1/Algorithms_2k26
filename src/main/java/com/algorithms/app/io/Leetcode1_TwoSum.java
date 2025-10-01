@@ -1,4 +1,4 @@
-package com.dollar.app.io;
+package com.algorithms.app.io;
 
 import java.util.Arrays;
 import java.util.HashMap;

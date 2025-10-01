@@ -1,4 +1,4 @@
-package com.dollar.app.io;
+package com.algorithms.app.io;
 
 public class ListNode {
     int val;

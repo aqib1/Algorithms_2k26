@@ -1,4 +1,4 @@
-package com.dollar.app.io;
+package com.algorithms.app.io;
 
 public class Q2_ShuffleArray {
     // Time O(n)

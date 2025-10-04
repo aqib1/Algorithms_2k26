@@ -4,6 +4,9 @@ public class Leetcode4_MedianTwoSortedArray {
 
     public static void main(String[] args) {
         System.out.println(
+                findMedianSortedArrays(new int[] {1, 2}, new int[] {3, 4})
+        );
+        System.out.println(
                 findMedianFaster(new int[] {1, 2}, new int[] {3, 4})
         );
     }
@@ -56,7 +59,7 @@ public class Leetcode4_MedianTwoSortedArray {
     // Brute force
     // Time complexity O(n + m)
     // Space complexity O(n + m)
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         var merged = new int[nums1.length + nums2.length];
         int i = 0, j = 0, k = 0;
 

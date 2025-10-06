@@ -2,8 +2,8 @@ Difficulty,Title,Frequency,Acceptance Rate,Link,Topics,Status
 EASY,Two Sum,100.0,0.557769945892896,https://leetcode.com/problems/two-sum,"Array, Hash Table", Done
 MEDIUM,Add Two Numbers,75.2,0.4622507658063209,https://leetcode.com/problems/add-two-numbers,"Linked List, Math, Recursion",Done
 HARD,Trapping Rain Water,73.7,0.6510193676088248,https://leetcode.com/problems/trapping-rain-water,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",Done
-HARD,Median of Two Sorted Arrays,73.2,0.4381459000864632,https://leetcode.com/problems/median-of-two-sorted-arrays,"Array, Binary Search, Divide and Conquer"
-MEDIUM,Longest Substring Without Repeating Characters,70.1,0.36936167568169936,https://leetcode.com/problems/longest-substring-without-repeating-characters,"Hash Table, String, Sliding Window"
+HARD,Median of Two Sorted Arrays,73.2,0.4381459000864632,https://leetcode.com/problems/median-of-two-sorted-arrays,"Array, Binary Search, Divide and Conquer",Done
+MEDIUM,Longest Substring Without Repeating Characters,70.1,0.36936167568169936,https://leetcode.com/problems/longest-substring-without-repeating-characters,"Hash Table, String, Sliding Window",Done
 EASY,Longest Common Prefix,70.0,0.4548305505260665,https://leetcode.com/problems/longest-common-prefix,"String, Trie"
 EASY,Valid Parentheses,66.7,0.42322820646682113,https://leetcode.com/problems/valid-parentheses,"String, Stack"
 MEDIUM,Longest Consecutive Sequence,66.2,0.47040828018665215,https://leetcode.com/problems/longest-consecutive-sequence,"Array, Hash Table, Union Find"

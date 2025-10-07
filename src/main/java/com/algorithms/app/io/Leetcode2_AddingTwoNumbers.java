@@ -1,5 +1,7 @@
 package com.algorithms.app.io;
 
+import com.algorithms.app.io.common.ListNode;
+
 public class Leetcode2_AddingTwoNumbers {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.algorithms.app.io;
+package com.algorithms.app.io.questions;
 
 public class Q2_ShuffleArray {
     // Time O(n)

@@ -1,5 +1,7 @@
 package com.algorithms.app.io;
 
+import com.algorithms.app.io.common.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

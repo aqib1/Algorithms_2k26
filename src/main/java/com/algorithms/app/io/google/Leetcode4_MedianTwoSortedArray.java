@@ -1,4 +1,4 @@
-package com.algorithms.app.io;
+package com.algorithms.app.io.google;
 
 public class Leetcode4_MedianTwoSortedArray {
 

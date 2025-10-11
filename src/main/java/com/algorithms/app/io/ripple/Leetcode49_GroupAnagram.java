@@ -28,6 +28,27 @@ public class Leetcode49_GroupAnagram {
         return anagramMap.values().stream().toList();
     }
 
+    // Time complexity O(n*m) where n are strs and m are character in each string.
+    // Space complexity O(n + m)
+    public static List<List<String>> groupAnagramsBitFaster(String[] strs) {
+        var anagramMap = new HashMap<String, List<String>>();
+        for (var st : strs) {
+            var key = getKeyFaster(st);
+            if (anagramMap.containsKey(key)) {
+                anagramMap.get(key).add(st);
+            } else {
+                anagramMap.put(key, new ArrayList<>(List.of(st)));
+            }
+        }
+        return anagramMap.values().stream().toList();
+    }
+
+    private static String getKeyFaster(String st) {
+        var count = new char[26];
+        for(char ch: st.toCharArray()) count[ch - 'a']++;
+        return String.valueOf(count);
+    }
+
     private static String getSortedKey(String st) {
         var key = st.toCharArray();
         Arrays.sort(key);

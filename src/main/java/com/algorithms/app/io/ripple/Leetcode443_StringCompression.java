@@ -31,31 +31,31 @@ public class Leetcode443_StringCompression {
      * Explanation: The groups are "aa", "bb", and "ccc". This compresses to
      * "a2b2c3".
      **/
+    // Time Complexity O(n)
+    // Space Complexity O(1)
     public static int compress(char[] chars) {
         int count = 0;
-        int pointer = 0;
-
-        for (int i = 0; i < chars.length;) {
-            char current = chars[i];
-            while (i < chars.length && chars[i] == current) {
+        int ptr = 0;
+        for (int i = 0; i < chars.length; ) {
+            var curr = chars[i];
+            chars[ptr++] = curr;
+            while (i < chars.length && chars[i] == curr) {
                 count++;
                 i++;
             }
-            chars[pointer++] = current;
-            if(count > 1) {
+            if (count > 1) {
                 for (char ch : String.valueOf(count).toCharArray()) {
-                    chars[pointer++] = ch;
+                    chars[ptr++] = ch;
                 }
             }
             count = 0;
         }
-
-        return pointer;
+        return ptr;
     }
 
     public static void main(String[] args) {
-        var data = new char[]{'a', 'b', 'c'};
-        compress(data);
+        var data = new char[]{'a', 'a', 'b', 'c'};
+        System.out.println(compress(data));
         System.out.println(Arrays.toString(data));
     }
 }

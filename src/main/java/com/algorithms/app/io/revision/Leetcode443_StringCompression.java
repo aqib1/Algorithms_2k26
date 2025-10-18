@@ -29,6 +29,8 @@ public class Leetcode443_StringCompression {
                     chars[ptr++] = ch;
                 }
             }
+
+            count = 0;
         }
         return ptr;
     }

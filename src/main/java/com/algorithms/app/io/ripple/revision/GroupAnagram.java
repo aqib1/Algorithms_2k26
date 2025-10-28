@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GroupAnagram {
+
+    // Time complexity O(N * KLogK) where k is the length of a key
+    // Space complexity O(NK)
     public List<List<String>> groupAnagrams(String[] strs) {
         if(strs.length == 0)
             return List.of();

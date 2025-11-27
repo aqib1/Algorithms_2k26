@@ -4,8 +4,16 @@ public class ListNode {
     int val;
     ListNode next;
 
-    ListNode(int val) {
+    ListNode() {
+
+    }
+
+    ListNode(int val, ListNode node) {
         this.val = val;
-        this.next = null;
+        this.next = node;
+    }
+
+    ListNode(int val) {
+        this(val, null);
     }
 }

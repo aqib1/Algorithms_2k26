@@ -1,17 +1,27 @@
 package com.algorithms.app.io.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PlusOne {
     static void main() {
-        plusOne(new int[] {1, 9, 9});
         System.out.println(
-
+                Arrays.toString(plusOneFaster(new int[] {1, 2, 3}))
         );
     }
 
+    // Time complexity O(n), space O(n)
     public static int[] plusOneFaster(int[] digits) {
-        return null;
+        for(var i=digits.length - 1; i >= 0; i--) {
+            if(digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        var sum = new int[digits.length + 1];
+        sum[0] = 1;
+        return sum;
     }
 
     public static int[] plusOne(int[] digits) {

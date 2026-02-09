@@ -1,6 +1,7 @@
 package com.algorithms.app.io.arrays;
 
 public class InsertionSort {
+    // Worst-case O(n)2 and Space is O(1)
     public void insertionSort(int []arr) {
         for(int i = 1; i < arr.length; i++) {
             int key = arr[i];

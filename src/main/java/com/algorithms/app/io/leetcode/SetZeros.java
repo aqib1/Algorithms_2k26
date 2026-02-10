@@ -1,6 +1,7 @@
 package com.algorithms.app.io.leetcode;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class SetZeros {
     static void main() {
@@ -9,8 +10,32 @@ public class SetZeros {
                 {3, 4, 5, 2},
                 {1, 3, 1, 5}
         };
-        setZerosSlow(matrix);
+//        setZerosSlow(matrix);
+        setZeros(matrix);
         System.out.println(Arrays.deepToString(matrix));
+    }
+
+    // Time complexity O(n)2 and space O(n)
+    public static void setZeros(int[][] matrix) {
+        var xIndex = new HashSet<Integer>();
+        var yIndex = new HashSet<Integer>();
+
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < matrix[i].length; j++) {
+                if(matrix[i][j] == 0) {
+                    xIndex.add(i);
+                    yIndex.add(j);
+                }
+            }
+        }
+
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < matrix[i].length; j++) {
+                if(xIndex.contains(i) || yIndex.contains(j)) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
     }
 
     // Time complexity O(n)2 and Space O(n)2

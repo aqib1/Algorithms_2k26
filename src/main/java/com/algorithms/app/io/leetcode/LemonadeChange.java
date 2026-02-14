@@ -1,7 +1,5 @@
 package com.algorithms.app.io.leetcode;
 
-import java.util.PriorityQueue;
-
 public class LemonadeChange {
     static void main() {
         System.out.println(

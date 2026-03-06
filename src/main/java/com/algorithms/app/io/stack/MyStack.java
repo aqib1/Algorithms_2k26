@@ -1,54 +1,44 @@
 package com.algorithms.app.io.stack;
 
-class Node {
-    int value;
-    Node prev;
+import java.util.LinkedList;
+import java.util.Queue;
 
-    Node(int value, Node prev) {
-        this.value = value;
-        this.prev = prev;
-    }
-}
 public class MyStack {
-    private Node current;
+    // 2, 3, 4
+    // 3, 4, 2
+    // 4, 2, 3
+    private final Queue<Integer> fifo;
 
+    // Space O(n)
     public MyStack() {
+        this.fifo = new LinkedList<>();
     }
 
+    // Time O(n)
     public void push(int x) {
-        current = new Node(x, current);
+        fifo.add(x);
+
+        for(int i = 0; i < fifo.size() - 1; i++) {
+            fifo.add(fifo.remove());
+        }
     }
 
+    // Time O(1)
     public int pop() {
-        if(current == null)
+        if(fifo.isEmpty())
             return -1;
-        var value = current.value;
-        current = current.prev;
-        return value;
+        return fifo.poll();
     }
 
+    // Time O(1)
     public int top() {
-        if(current == null)
+        if(fifo.isEmpty())
             return -1;
-        return current.value;
+        return fifo.peek();
     }
 
+    // Time O(1)
     public boolean empty() {
-        return current == null;
-    }
-
-    static void main() {
-        var stack = new MyStack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.top());
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.top());
-        System.out.println(stack.empty());
+        return fifo.isEmpty();
     }
 }

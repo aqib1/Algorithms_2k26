@@ -17,16 +17,7 @@ public class BfsBT {
         node.right.left = new TreeNode(6);
         node.right.right = new TreeNode(7);
         IO.println(inOrderWithRecur(node));
-    }
-
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int val) {
-            this.val = val;
-        }
+        IO.println(inOrder(node));
     }
 
 

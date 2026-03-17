@@ -1,5 +1,7 @@
 package catoNetworks;
 
+// Time complexity O(n * m)
+// Space complexity O(n * m)
 public class WordSearch {
     static void main() {
         var wordSearch = new WordSearch();

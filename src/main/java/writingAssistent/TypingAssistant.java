@@ -1,65 +1,161 @@
+package writingAssistent;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class TypingAssistant {
 
-    void main(String[] args) {
-        // The content you want the application to type
-        String textToType = "Hello! This is being typed by a Java application at human speed.";
+    private static final Random RANDOM = new Random();
+
+    static void main(String[] args) {
 
         try {
-            System.out.println("Starting in 5 seconds... CLICK inside your target input field NOW!");
-            Thread.sleep(10000); // 5-second countdown to position your cursor
+            String textToType;
+            try (var is = TypingAssistant.class.getResourceAsStream("/writingAssistent/content.txt")) {
+                if (is == null) {
+                    throw new IOException();
+                }
+                textToType = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+            }
 
             Robot robot = new Robot();
-            Random random = new Random();
 
-            for (char c : textToType.toCharArray()) {
-                typeChar(robot, c);
+            // Allow time to focus the target input field.
+            System.out.println(
+                    "Starting in 10 seconds. Focus your target input field."
+            );
 
-                // HUMAN SPEED: Generate a random delay between 60ms and 180ms per character
-                int delay = 60 + random.nextInt(120);
+            Thread.sleep(10_000);
 
-                // Add an extra pause for punctuation to make it look even more natural
-                if (c == '.' || c == ',' || c == '!' || c == '?') {
-                    delay += 300;
-                }
+            // Establish the initial typing rhythm.
+            double speedFactor = 0.85 + RANDOM.nextDouble() * 0.30;
+
+            for (int i = 0; i < textToType.length(); i++) {
+
+                char current = textToType.charAt(i);
+
+                typeChar(robot, current);
+
+                char next = i + 1 < textToType.length()
+                        ? textToType.charAt(i + 1)
+                        : '\0';
+
+                long delay = calculateDelay(
+                        current,
+                        next,
+                        speedFactor
+                );
 
                 Thread.sleep(delay);
+
+                // Occasionally change the rhythm slightly.
+                if (RANDOM.nextDouble() < 0.03) {
+                    speedFactor = 0.85 + RANDOM.nextDouble() * 0.30;
+                }
             }
 
             System.out.println("Typing complete!");
 
         } catch (AWTException | InterruptedException e) {
+            Thread.currentThread().interrupt();
+            e.printStackTrace();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Helper method to simulate press and release of keys
-    private static void typeChar(Robot robot, char c) {
-        boolean isUpperCase = Character.isUpperCase(c) || getSpecialShiftChars(c);
+    private static long calculateDelay(
+            char current,
+            char next,
+            double speedFactor
+    ) {
 
-        if (isUpperCase) {
-            robot.keyPress(KeyEvent.VK_SHIFT);
+        // Base delay for ordinary characters.
+        long delay = randomBetween(45, 100);
+
+        // Consecutive letters generally form a typing burst.
+        if (Character.isLetter(current)
+                && Character.isLetter(next)) {
+
+            delay = randomBetween(35, 85);
         }
+
+        // Spaces create small rhythm changes.
+        if (current == ' ') {
+            delay += randomBetween(20, 80);
+        }
+
+        // Sentence punctuation creates a longer pause.
+        if (current == '.' || current == '!' || current == '?') {
+            delay += randomBetween(180, 450);
+        }
+
+        // Commas and semicolons usually introduce shorter pauses.
+        if (current == ',' || current == ';' || current == ':') {
+            delay += randomBetween(100, 250);
+        }
+
+        // Paragraph boundaries introduce larger pauses.
+        if (current == '\n') {
+            delay += randomBetween(250, 600);
+        }
+
+        // Occasionally hesitate briefly.
+        if (RANDOM.nextDouble() < 0.025) {
+            delay += randomBetween(150, 350);
+        }
+
+        // Apply a small variation to the overall typing rhythm.
+        return Math.max(20, Math.round(delay * speedFactor));
+    }
+
+    private static long randomBetween(int min, int max) {
+        return min + RANDOM.nextInt(max - min + 1);
+    }
+
+    private static void typeChar(Robot robot, char c) {
+
+        if (c == '\n') {
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            return;
+        }
+
+        if (c == '\t') {
+            robot.keyPress(KeyEvent.VK_TAB);
+            robot.keyRelease(KeyEvent.VK_TAB);
+            return;
+        }
+
+        boolean shift = Character.isUpperCase(c)
+                || "!@#$%^&*()_+{}|:\"<>?".indexOf(c) >= 0;
 
         int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
 
-        if (keyCode != KeyEvent.VK_UNDEFINED) {
+        if (keyCode == KeyEvent.VK_UNDEFINED) {
+            System.err.println(
+                    "Unsupported character: " + c
+            );
+            return;
+        }
+
+        try {
+            if (shift) {
+                robot.keyPress(KeyEvent.VK_SHIFT);
+            }
+
             robot.keyPress(keyCode);
             robot.keyRelease(keyCode);
-        }
 
-        if (isUpperCase) {
-            robot.keyRelease(KeyEvent.VK_SHIFT);
+        } finally {
+            if (shift) {
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            }
         }
-    }
-
-    // Quick check for characters that require SHIFT (e.g., !, ?, @)
-    private static boolean getSpecialShiftChars(char c) {
-        String shiftChars = "!@#$%^&*()_+{}|:\"<>?";
-        return shiftChars.indexOf(c) != -1;
     }
 }

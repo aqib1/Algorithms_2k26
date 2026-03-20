@@ -19,5 +19,7 @@ public class MainClass {
 
         Light light1 = new Light();
         ocp.scope.Light light2 = new ocp.scope.Light(); // when two class with same name exists in different packages, we can not import both so one need to initialized with fully qualified name.
+        var greenLight = new GreenLight();
+        greenLight.test();
     }
 }

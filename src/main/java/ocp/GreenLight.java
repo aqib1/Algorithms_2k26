@@ -2,9 +2,42 @@ package ocp;
 
 import ocp.scope.Light;
 
+
+// A class call parent constructor first and then run instance block first in order how they defined and then its own constructor.
+
 public class GreenLight extends Light {
     private String _$$$$___ = "";
+    {
+        IO.println("This is child first instance block");
+    }
+    public GreenLight() {
+        // Will call parent constructor first.
+        // Then run all instance block (class level) defined outside in order they are defined
+        // then below line will be printed
+        IO.println("This is child green light constructor");
+    }
+
+    {
+        IO.println("This is child second instance block");
+    }
+
+    static {
+        IO.println("This is static child first instance block");
+    }
+
+    static {
+        IO.println("This is static child second instance block");
+    }
+
+    static {
+        IO.println("This is static child third instance block");
+    }
+
     public void printLightName() {
+        {
+            IO.println("Instance block of method");
+            super.name = "Here we go";
+        }
         System.out.println(super.name);
     }
 

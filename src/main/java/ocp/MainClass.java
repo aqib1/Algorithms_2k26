@@ -17,9 +17,10 @@ public class MainClass {
 //        var name = IO.readln("Enter your name: ");
 //        System.out.println("Name : "+ name);
 
-        Light light1 = new Light();
-        ocp.scope.Light light2 = new ocp.scope.Light(); // when two class with same name exists in different packages, we can not import both so one need to initialized with fully qualified name.
+       // Light light1 = new Light();
+        //ocp.scope.Light light2 = new ocp.scope.Light(); // when two class with same name exists in different packages, we can not import both so one need to initialized with fully qualified name.
         var greenLight = new GreenLight();
-        greenLight.test();
+        greenLight.printLightName();
+        //greenLight.test();
     }
 }

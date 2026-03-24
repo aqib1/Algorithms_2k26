@@ -8,6 +8,16 @@ public class NumberOfIslands {
     static void main() {
         var n = new NumberOfIslands();
         IO.println(
+                n.numIslands(
+                        new char[][]{
+                                {'1', '1', '1', '1', '0'},
+                                {'1', '1', '0', '1', '0'},
+                                {'1', '1', '0', '0', '0'},
+                                {'0', '0', '0', '0', '0'}
+                        }
+                )
+        );
+        IO.println(
                 n.numIslandsWithoutUsingExtraSpace(
                         new char[][]{
                                 {'1', '1', '1', '1', '0'},

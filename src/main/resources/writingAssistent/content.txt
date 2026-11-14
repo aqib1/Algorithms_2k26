@@ -1,9 +1,10 @@
-- The presentation has almost all the necessary information, with a few weaknesses.
+Grouping:
+The deck correctly groups relevant details to keep the slides concrete and easy to follow. On slide 5, all of destination are clearly matched with its own cost bar and final value. Slide 6 groups the activities by day number, which makes the overall itinerary smooth to read. Finally, slide 9 avoids any clutter by keeping the recommendation separate from the three booking actions.
 
-- The presentation correctly compares all three destinations, Peru, Dubai and South Africa, and correctly mentions the maximum budget in the first introduction slide explained in the prompt.
+Hierarchy:
+It's really easy to see what matters most on each slide. Slide 4 puts the key numbers front and center, while slide 8 drops the remaining budget into its own massive panel right next to the ideas on how to spend it. Slide 9 does something similar by splitting the main recommendation away from the numbered next steps. This setup lets anyone scanning the presentation catch the main points before they get into the nitty-gritty details.
 
-- The second slide, "South Africa is the only option that meets all four parts of the brief", explained adventure activities, food, downtime, budget and December conditions for all three destinations.
+Clutter and Overlap:
+Everything fits perfectly on the screen with zero text clipping or weird overlaps. Honestly, slide 6 is packed to the brim with ten different itinerary cards, but the structured layout keeps it from turning into a total mess. Over on slide 7, separating the South Africa vs. Dubai comparison into two distinct panels makes it incredibly easy to scan.
 
-- The third slide, "All three fit the £6,000 budget, and South Africa is cheapest at £5,000", clearly compares the cost, which is supposed to be for each destination, and highlights the cheapest option.
-
-- The 4th, 5th and 6th slides represent different factors of the trip, including adventure, downtime, ease of travel and weather. They help us choose a trade-off between those attributes and help us decide which destination should be selected under which circumstances.
+The layout system here definitely works things are grouped well, the key info pops out, and it’s pretty organized overall, making slides 5 and 8 especially easy to scan. The main issue is that there’s a lot of empty, dead space inside some of the cards, and the formatting shifts around too much between the intro, content, and conclusion slides, which hurts the consistency. It looks a bit unpolished, though it doesn't actually stop you from using the deck. A 4 out of 7 feels right since the foundation is functional, but there’s a really clear opportunity to tighten up the spacing and make the slides feel like they belong to the same deck.

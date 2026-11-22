@@ -2,6 +2,7 @@ package revision.rizwan;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.BiPredicate;
 
 public class InsertionSort {
 
@@ -30,14 +31,17 @@ public class InsertionSort {
     // [j + 1] = [j];
     // j--;
     // loop sy bahar = [j+1] = key
-    private void sort(int []arr) {
+
+
+    // O(n2) - O(1)
+    private void sort(int []arr, BiPredicate<Integer, Integer> cond) {
         if(Objects.isNull(arr) || arr.length == 0)
             return;
 
         for(int i = 1; i < arr.length; i++) {
-            int key = arr[i]; // 2
-            int j = i - 1; // 3
-            while(j >= 0 && key < arr[j]) {
+            int key = arr[i];
+            int j = i - 1;
+            while(j >= 0 && cond.test(arr[j], key)) {
                 arr[j + 1] = arr[j];
                 j--;
             }
@@ -48,7 +52,7 @@ public class InsertionSort {
     static void main() {
         var data = new int[] {3, 8, 2, 9, 4, 1};
         var s = new InsertionSort();
-        s.sort(data);
+        s.sort(data, (a, b) -> b > a);
         IO.println(Arrays.toString(data));
     }
 }
